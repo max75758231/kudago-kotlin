@@ -28,7 +28,7 @@
                 app:popupTheme="@style/Base.ThemeOverlay.AppCompat.Light"
                 app:layout_collapseMode="pin">
 
-                <include layout="@layout/toolbar_events"/>
+                <include layout="@layout/toolbar_main"/>
 
             </androidx.appcompat.widget.Toolbar>
 
@@ -62,7 +62,7 @@
                     android:layout_marginStart="@dimen/main_title_margin_16dp"
                     android:layout_marginTop="@dimen/main_title_margin_16dp"
                     android:text="@string/main_title"
-                    android:textColor="@color/colorBlack"
+                    android:textColor="@android:color/black"
                     android:textSize="30sp"
                     android:textStyle="bold"/>
 
@@ -90,7 +90,7 @@
             android:id="@+id/main_iv_no_internet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_no_internet" />
+            app:srcCompat="@drawable/ic_no_internet" />
 
         <TextView
             android:id="@+id/main_tv_no_internet"
@@ -99,7 +99,7 @@
             android:layout_marginTop="@dimen/main_no_internet_margin_26dp"
             android:gravity="center"
             android:text="@string/main_tv_no_internet"
-            android:textColor="@color/colorBlack"
+            android:textColor="@android:color/black"
             android:textSize="@dimen/main_no_internet_size_16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

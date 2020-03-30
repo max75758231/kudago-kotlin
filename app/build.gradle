@@ -43,6 +43,7 @@ ext {
     recyclerVersion = "1.2.0-alpha01"
     constraintVersion = "1.1.3"
     lifecycleVersion = "1.1.1"
+    swipeRefreshVersion = "1.0.0"
 
     // Jetpack
     navigation_version = "2.2.0"
@@ -79,6 +80,7 @@ dependencies {
     implementation "androidx.vectordrawable:vectordrawable:$vectorDrawableVersion"
     implementation "androidx.cardview:cardview:$cardViewVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshVersion"
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
