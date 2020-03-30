@@ -1,19 +1,19 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.android.kudago_kotlin"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
-
+        versionName "0.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -23,15 +23,85 @@ android {
         }
     }
 
+    android {
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+
+}
+
+ext {
+    // AndroidX
+    appCompatVersion = "1.1.0"
+    vectorDrawableVersion = "1.0.1"
+    coreKtxVersion = "1.2.0"
+    constraintVersion = "2.0.0-alpha3"
+    materialVersion = "1.2.0-alpha05"
+    cardViewVersion = "1.0.0"
+    recyclerVersion = "1.2.0-alpha01"
+    constraintVersion = "1.1.3"
+    lifecycleVersion = "1.1.1"
+
+    // Jetpack
+    navigation_version = "2.2.0"
+
+    // Network
+    gsonVersion = "2.8.6"
+    retrofitVersion = "2.7.1"
+    retrofitAdapterVersion = "1.0.0"
+    okhttpVersion = "4.3.1"
+    coroutines_version = "1.3.0"
+
+    // Media
+    glideVersion = "4.7.1"
+
+    // Other
+    googleMaps_version = "17.0.0"
+
+    // Testing
+    junit_version = "4.12"
+    junitExt_version = "1.1.1"
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Testing
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$junitExt_version"
+
+    // AndroidX
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.vectordrawable:vectordrawable:$vectorDrawableVersion"
+    implementation "androidx.cardview:cardview:$cardViewVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerVersion"
+
+    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
+
+    // Jetpack
+    implementation "android.arch.lifecycle:extensions:$lifecycleVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
+    // Network
+    implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    // Media
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+
+    // Others
+    implementation "com.google.android.gms:play-services-maps:$googleMaps_version"
 }
