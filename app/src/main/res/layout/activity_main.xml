@@ -42,38 +42,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="?attr/actionBarSize">
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/main_nested_scroll"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_events"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:id="@+id/main_layout_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:focusableInTouchMode="true">
-
-                <TextView
-                    android:id="@+id/main_tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/main_title_margin_16dp"
-                    android:layout_marginStart="@dimen/main_title_margin_16dp"
-                    android:layout_marginTop="@dimen/main_title_margin_16dp"
-                    android:text="@string/main_title"
-                    android:textColor="@android:color/black"
-                    android:textSize="30sp"
-                    android:textStyle="bold"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/main_rv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-        </androidx.core.widget.NestedScrollView>
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <LinearLayout
