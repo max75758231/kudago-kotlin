@@ -1,6 +1,5 @@
 package com.android.kudago_kotlin.ui.main
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
@@ -16,13 +15,18 @@ class MainViewModel @Inject constructor(
     private val eventsRepository: EventsRepository
 ) : BaseViewModel() {
 
-    var eventsLiveData: LiveData<PagedList<Events.Event>>
-    val progressLiveData: MutableLiveData<Boolean> = MutableLiveData(false)
+    private var eventsLiveData: LiveData<PagedList<Events.Event>>
+    val events: LiveData<PagedList<Events.Event>>
+        get() = eventsLiveData
+
+    private val progressLiveData: MutableLiveData<Boolean> = MutableLiveData(false)
+    val progress: LiveData<Boolean>
+        get() = progressLiveData
 
     init {
         val config = PagedList.Config.Builder()
-            .setPageSize(20)
-            .setInitialLoadSizeHint(20)
+            .setPageSize(EVENTS_PAGE_SIZE)
+            .setInitialLoadSizeHint(EVENTS_PAGE_SIZE)
             .setEnablePlaceholders(false)
             .build()
 
@@ -34,7 +38,6 @@ class MainViewModel @Inject constructor(
 
         val dataSourceFactory = object : DataSource.Factory<String, Events.Event>() {
             override fun create(): DataSource<String, Events.Event> {
-                Log.d("myLog", "called ")
                 val dataSource = EventsDataSource(eventsRepository)
                 dataSource.coroutineScope = ioScope
                 dataSource.onLoadingFinished = { progressLiveData.postValue(false) }
@@ -45,3 +48,5 @@ class MainViewModel @Inject constructor(
         return LivePagedListBuilder<String, Events.Event>(dataSourceFactory, config)
     }
 }
+
+private const val EVENTS_PAGE_SIZE = 20

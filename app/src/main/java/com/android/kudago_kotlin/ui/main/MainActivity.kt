@@ -26,10 +26,17 @@ class MainActivity : AppCompatActivity() {
 
         rv_events.adapter = EventsAdapter()
         eventsViewModel = ViewModelProviders.of(this, viewModelFactory)[MainViewModel::class.java]
-        eventsViewModel.eventsLiveData.observe(this, Observer {
+
+        initObservers()
+
+        swipe_refresh.setOnRefreshListener { swipe_refresh.isRefreshing = false }
+    }
+
+    private fun initObservers() {
+        eventsViewModel.events.observe(this, Observer {
             showEvents(it)
         })
-        eventsViewModel.progressLiveData.observe(this, Observer {
+        eventsViewModel.progress.observe(this, Observer {
             showProgress(it)
         })
     }
@@ -39,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         (rv_events.adapter as EventsAdapter).submitList(events)
     }
 
-    fun showProgress(isVisible: Boolean) {
+    private fun showProgress(isVisible: Boolean) {
         if (isVisible) {
             (rv_events.adapter as EventsAdapter).setState(EventsAdapter.State.LOADING)
         } else {

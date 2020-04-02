@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinator_layout_main"
+    android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
@@ -21,7 +21,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/main_toolbar"
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="center_vertical"
@@ -37,10 +37,10 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/main_swipe_refresh"
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/actionBarSize">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_events"
@@ -50,7 +50,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <LinearLayout
-        android:id="@+id/main_layout_no_internet"
+        android:id="@+id/layout_no_internet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -60,13 +60,13 @@
         android:visibility="gone">
 
         <ImageView
-            android:id="@+id/main_iv_no_internet"
+            android:id="@+id/iv_no_internet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_no_internet" />
 
         <TextView
-            android:id="@+id/main_tv_no_internet"
+            android:id="@+id/tv_no_internet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/main_no_internet_margin_26dp"
@@ -80,7 +80,7 @@
     </LinearLayout>
 
     <ProgressBar
-        android:id="@+id/main_pb"
+        android:id="@+id/pb_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

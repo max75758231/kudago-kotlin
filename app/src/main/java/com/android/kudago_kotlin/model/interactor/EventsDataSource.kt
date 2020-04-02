@@ -29,12 +29,10 @@ class EventsDataSource(private val eventsRepository: EventsRepository) : PageKey
     override fun loadInitial(params: LoadInitialParams<String>, callback: LoadInitialCallback<String, Events.Event>) {
         coroutineScope?.launch {
             try {
-                Log.d("myLog", "initial, size: ${params.requestedLoadSize}")
                 onLoadingStarted?.invoke()
                 val events = eventsRepository.getEvents("1", params.requestedLoadSize)
                 val nextPageLink = events.nextPage
                 val next = nextPageLink?.substringAfterLast("page=")?.substringBefore("&")
-                Log.d("myLog", "initial end: $next")
                 callback.onResult(events.results, null, next.toString())
             } catch (exception: Exception) {
                 Log.e("myLog", exception.message)
@@ -49,7 +47,6 @@ class EventsDataSource(private val eventsRepository: EventsRepository) : PageKey
     override fun loadAfter(params: LoadParams<String>, callback: LoadCallback<String, Events.Event>) {
         coroutineScope?.launch {
             try {
-                Log.d("myLog", "after, size: ${params.requestedLoadSize}, page: ${params.key}")
                 onLoadingStarted?.invoke()
                 val events = eventsRepository.getEvents(params.key, params.requestedLoadSize)
                 val nextPageLink = events.nextPage
