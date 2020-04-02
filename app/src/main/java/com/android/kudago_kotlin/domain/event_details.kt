@@ -16,8 +16,15 @@ data class Event(
 
     data class Place(
         val id: Long,
-        val title: String
-    )
+        val title: String,
+        val coords: Coords
+    ) {
+
+        data class Coords(
+            val latitude: Double,
+            val longitude: Double
+        )
+    }
 
     data class Date(
         val start: Long?,

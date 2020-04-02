@@ -24,11 +24,23 @@ data class Event(
 
     data class Place(
         val id: Long,
-        val title: String
+        val title: String,
+        val coords: Coords
     ) {
 
+        data class Coords(
+            val lat: Double,
+            val lon: Double
+        ) {
+
+            fun toDomainModel() = Event.Place.Coords(
+                latitude = lat,
+                longitude = lon
+            )
+        }
+
         fun toDomainModel() = Event.Place(
-            id, title
+            id, title, coords.toDomainModel()
         )
     }
 
