@@ -10,6 +10,7 @@ import com.android.kudago_kotlin.R
 import com.android.kudago_kotlin.domain.Events
 import com.android.kudago_kotlin.util.setTextOrHideIfNull
 import com.android.kudago_kotlin.util.setVisible
+import com.bumptech.glide.Glide
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_event.*
 import kotlinx.android.synthetic.main.item_event.view.*
@@ -73,6 +74,11 @@ class EventsAdapter : PagedListAdapter<Events.Event, RecyclerView.ViewHolder>(Ev
                 tv_location.setTextOrHideIfNull(event.place?.title)
                 tv_date.setTextOrHideIfNull(event.dates)
                 tv_price.setTextOrHideIfNull(event.price)
+                event.images?.let {
+                    Glide.with(iv_image)
+                        .load(it[0].imageUrl)
+                        .into(iv_image)
+                }
             }
         }
     }

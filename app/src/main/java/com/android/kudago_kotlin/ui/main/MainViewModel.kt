@@ -19,7 +19,7 @@ class MainViewModel @Inject constructor(
     val events: LiveData<PagedList<Events.Event>>
         get() = eventsLiveData
 
-    private val progressLiveData: MutableLiveData<Boolean> = MutableLiveData(false)
+    private val progressLiveData: MutableLiveData<Boolean> = MutableLiveData()
     val progress: LiveData<Boolean>
         get() = progressLiveData
 
