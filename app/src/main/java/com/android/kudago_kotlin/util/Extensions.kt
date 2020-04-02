@@ -9,6 +9,7 @@ fun View.setVisible(isVisible: Boolean) {
 
 fun TextView.setTextOrHideIfNull(text: String?) {
     text?.let {
+        this.setVisible(true)
         this.text = it
     } ?: this.setVisible(false)
 }

@@ -19,9 +19,13 @@ class MainViewModel @Inject constructor(
     val events: LiveData<PagedList<Events.Event>>
         get() = eventsLiveData
 
-    private val progressLiveData: MutableLiveData<Boolean> = MutableLiveData()
-    val progress: LiveData<Boolean>
-        get() = progressLiveData
+    private val progressInitialLiveData: MutableLiveData<Boolean> = MutableLiveData()
+    val progressInitial: LiveData<Boolean>
+        get() = progressInitialLiveData
+
+    private val progressPagingLiveData: MutableLiveData<Boolean> = MutableLiveData()
+    val progressPaging: LiveData<Boolean>
+        get() = progressPagingLiveData
 
     init {
         val config = PagedList.Config.Builder()
@@ -40,8 +44,10 @@ class MainViewModel @Inject constructor(
             override fun create(): DataSource<String, Events.Event> {
                 val dataSource = EventsDataSource(eventsRepository)
                 dataSource.coroutineScope = ioScope
-                dataSource.onLoadingFinished = { progressLiveData.postValue(false) }
-                dataSource.onLoadingStarted = { progressLiveData.postValue(true) }
+                dataSource.onPagingLoadingStarted = { progressPagingLiveData.postValue(true) }
+                dataSource.onPagingLoadingFinished = { progressPagingLiveData.postValue(false) }
+                dataSource.onInitialLoadingStarted = { progressInitialLiveData.postValue(true) }
+                dataSource.onInitialLoadingFinished = {progressInitialLiveData.postValue(false)}
                 return dataSource
             }
         }

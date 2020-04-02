@@ -2,7 +2,6 @@ package com.android.kudago_kotlin.model.interactor
 
 import android.util.Log
 import androidx.paging.PageKeyedDataSource
-import androidx.paging.PositionalDataSource
 import com.android.kudago_kotlin.domain.Events
 import com.android.kudago_kotlin.model.data.repository.EventsRepository
 import kotlinx.coroutines.CoroutineScope
@@ -13,23 +12,17 @@ import kotlinx.coroutines.launch
  */
 class EventsDataSource(private val eventsRepository: EventsRepository) : PageKeyedDataSource<String, Events.Event>() {
 
-    /**
-     * Scope of DataSource running
-     */
+
     var coroutineScope: CoroutineScope? = null
-    /**
-     * Callback when loading is started
-     */
-    var onLoadingStarted: OnLoadingStarted? = null
-    /**
-     * Callback when loading is finished
-     */
-    var onLoadingFinished: OnLoadingFinished? = null
+    var onInitialLoadingStarted: OnInitialLoadingStarted? = null
+    var onInitialLoadingFinished: OnInitialLoadingFinished? = null
+    var onPagingLoadingStarted: OnPagingLoadingStarted? = null
+    var onPagingLoadingFinished: OnPagingLoadingFinished? = null
 
     override fun loadInitial(params: LoadInitialParams<String>, callback: LoadInitialCallback<String, Events.Event>) {
         coroutineScope?.launch {
             try {
-                onLoadingStarted?.invoke()
+                onInitialLoadingStarted?.invoke()
                 val events = eventsRepository.getEvents("1", params.requestedLoadSize)
                 val nextPageLink = events.nextPage
                 val next = nextPageLink?.substringAfterLast("page=")?.substringBefore("&")
@@ -37,7 +30,7 @@ class EventsDataSource(private val eventsRepository: EventsRepository) : PageKey
             } catch (exception: Exception) {
                 Log.e("myLog", exception.message)
             } finally {
-                onLoadingFinished?.invoke()
+                onInitialLoadingFinished?.invoke()
             }
         }
     }
@@ -47,7 +40,7 @@ class EventsDataSource(private val eventsRepository: EventsRepository) : PageKey
     override fun loadAfter(params: LoadParams<String>, callback: LoadCallback<String, Events.Event>) {
         coroutineScope?.launch {
             try {
-                onLoadingStarted?.invoke()
+                onPagingLoadingStarted?.invoke()
                 val events = eventsRepository.getEvents(params.key, params.requestedLoadSize)
                 val nextPageLink = events.nextPage
                 val next = nextPageLink?.substringAfterLast("page=")?.substringBefore("&")
@@ -55,11 +48,13 @@ class EventsDataSource(private val eventsRepository: EventsRepository) : PageKey
             } catch (exception: Exception) {
                 Log.e("myLog", exception.message)
             } finally {
-                onLoadingFinished?.invoke()
+                onPagingLoadingFinished?.invoke()
             }
         }
     }
 }
 
-internal typealias OnLoadingStarted = () -> Unit
-internal typealias OnLoadingFinished = () -> Unit
+internal typealias OnPagingLoadingStarted = () -> Unit
+internal typealias OnPagingLoadingFinished = () -> Unit
+internal typealias OnInitialLoadingStarted = () -> Unit
+internal typealias OnInitialLoadingFinished = () -> Unit

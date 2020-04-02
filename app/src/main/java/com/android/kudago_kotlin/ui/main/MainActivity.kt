@@ -9,6 +9,7 @@ import androidx.paging.PagedList
 import com.android.kudago_kotlin.App
 import com.android.kudago_kotlin.R
 import com.android.kudago_kotlin.domain.Events
+import com.android.kudago_kotlin.util.setVisible
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -29,20 +30,26 @@ class MainActivity : AppCompatActivity() {
 
         initObservers()
 
-        swipe_refresh.setOnRefreshListener { swipe_refresh.isRefreshing = false }
+        swipe_refresh.setOnRefreshListener {
+            eventsViewModel.events.value?.dataSource?.invalidate()
+        }
     }
 
     private fun initObservers() {
         eventsViewModel.events.observe(this, Observer {
+            if (swipe_refresh.isRefreshing) swipe_refresh.isRefreshing = false
             showEvents(it)
         })
-        eventsViewModel.progress.observe(this, Observer {
+        eventsViewModel.progressInitial.observe(this, Observer { visible ->
+            rv_events.setVisible(!visible)
+            pb_main.setVisible(visible)
+        })
+        eventsViewModel.progressPaging.observe(this, Observer {
             showProgress(it)
         })
     }
 
     private fun showEvents(events: PagedList<Events.Event>) {
-        showProgress(false)
         (rv_events.adapter as EventsAdapter).submitList(events)
     }
 
