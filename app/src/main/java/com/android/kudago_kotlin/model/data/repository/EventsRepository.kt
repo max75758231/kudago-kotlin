@@ -11,7 +11,7 @@ class EventsRepository @Inject constructor(
         api.getEvents(LIST_FIELDS_TO_RETRIEVE,
                       size,
                       page,
-                      TextFormat.PLAIN.toString().toLowerCase(),
+                      TextFormat.TEXT.toString().toLowerCase(),
                       EXPANDED_FIELDS
         ).toDomainModel()
 
@@ -24,7 +24,7 @@ class EventsRepository @Inject constructor(
         ).toDomainModel()
 
     enum class TextFormat {
-        HTML, PLAIN
+        HTML, PLAIN, TEXT
     }
 }
 

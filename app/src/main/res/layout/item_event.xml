@@ -14,6 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="@dimen/main_item_component_margin_16dp"
         android:orientation="vertical">
 
         <ImageView
@@ -43,7 +44,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
             android:layout_marginRight="@dimen/main_item_component_margin_16dp"
-            android:layout_marginBottom="@dimen/main_item_component_margin_8dp"
             android:textColor="@color/colorTvBlack"
             tools:text="@string/item_details"/>
 
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
             android:layout_marginRight="@dimen/main_item_component_margin_16dp"
-            android:layout_marginBottom="@dimen/main_item_component_margin_8dp"
+            android:layout_marginTop="@dimen/main_item_component_margin_8dp"
             android:paddingStart="4dp"
             tools:text="@string/item_info_location"
             android:drawableStart="@drawable/ic_location"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
             android:layout_marginRight="@dimen/main_item_component_margin_16dp"
-            android:layout_marginBottom="@dimen/main_item_component_margin_8dp"
+            android:layout_marginTop="@dimen/main_item_component_margin_8dp"
             android:paddingStart="4dp"
             android:drawableStart="@drawable/ic_date"
             android:drawablePadding="12dp"
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
             android:layout_marginRight="@dimen/main_item_component_margin_16dp"
-            android:layout_marginBottom="@dimen/main_item_component_margin_16dp"
+            android:layout_marginTop="@dimen/main_item_component_margin_8dp"
             android:paddingStart="4dp"
             android:drawableStart="@drawable/ic_ruble"
             android:drawablePadding="18dp"
