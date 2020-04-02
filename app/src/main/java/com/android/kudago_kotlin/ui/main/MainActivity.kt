@@ -1,5 +1,6 @@
 package com.android.kudago_kotlin.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -9,6 +10,7 @@ import com.android.kudago_kotlin.App
 import com.android.kudago_kotlin.R
 import com.android.kudago_kotlin.domain.Events
 import com.android.kudago_kotlin.ui.base.BaseActivity
+import com.android.kudago_kotlin.ui.details.EventDetailsActivity
 import com.android.kudago_kotlin.util.setVisible
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -25,7 +27,7 @@ class MainActivity : BaseActivity() {
 
         App().component.inject(this)
 
-        rv_events.adapter = EventsAdapter()
+        rv_events.adapter = EventsAdapter { eventId -> onEventClicked(eventId) }
         eventsViewModel = ViewModelProviders.of(this, viewModelFactory)[MainViewModel::class.java]
 
         initObservers()
@@ -47,6 +49,12 @@ class MainActivity : BaseActivity() {
         eventsViewModel.progressPaging.observe(this, Observer {
             showProgress(it)
         })
+    }
+
+    private fun onEventClicked(eventId: Long) {
+        val intent = Intent(this, EventDetailsActivity::class.java)
+        intent.putExtra("event_id", eventId)
+        startActivity(intent)
     }
 
     private fun showEvents(events: PagedList<Events.Event>) {

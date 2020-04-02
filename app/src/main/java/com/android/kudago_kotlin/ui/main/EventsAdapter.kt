@@ -13,7 +13,9 @@ import com.bumptech.glide.Glide
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_event.view.*
 
-class EventsAdapter : PagedListAdapter<Events.Event, RecyclerView.ViewHolder>(EventsDiffUtil()) {
+class EventsAdapter(
+    private val onEventClickCallback: OnEventClickCallback
+) : PagedListAdapter<Events.Event, RecyclerView.ViewHolder>(EventsDiffUtil()) {
 
     private var currentState: State = State.OK
 
@@ -81,6 +83,7 @@ class EventsAdapter : PagedListAdapter<Events.Event, RecyclerView.ViewHolder>(Ev
                         .into(iv_image)
                 }
             }
+            containerView.setOnClickListener { onEventClickCallback.invoke(event.id) }
         }
     }
 
@@ -102,6 +105,8 @@ class EventsAdapter : PagedListAdapter<Events.Event, RecyclerView.ViewHolder>(Ev
         OK
     }
 }
+
+internal typealias OnEventClickCallback = (Long) -> Unit
 
 private const val EVENT_IMAGE_WIDTH = 600
 private const val EVENT_IMAGE_HEIGHT = 280

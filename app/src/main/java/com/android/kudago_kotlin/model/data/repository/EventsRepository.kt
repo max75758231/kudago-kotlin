@@ -8,17 +8,28 @@ class EventsRepository @Inject constructor(
 ) {
 
     suspend fun getEvents(page: String, size: Int) =
-        api.getEvents(FIELDS_TO_RETRIEVE,
+        api.getEvents(LIST_FIELDS_TO_RETRIEVE,
                       size,
                       page,
                       TextFormat.PLAIN.toString().toLowerCase(),
                       EXPANDED_FIELDS
         ).toDomainModel()
 
+    suspend fun getEventDetails(eventId: Long) =
+        api.getEventDetails(eventId,
+                            CONTENT_LANGUAGE_RU,
+                            DETAILS_FIELDS_TO_RETRIEVE,
+                            EXPANDED_FIELDS,
+                            TextFormat.HTML.toString().toLowerCase()
+        ).toDomainModel()
+
     enum class TextFormat {
-        HTML, PLAIN, TEXT
+        HTML, PLAIN
     }
 }
 
-private const val FIELDS_TO_RETRIEVE = "id,dates,title,place,price,description,images"
+private const val LIST_FIELDS_TO_RETRIEVE = "id,dates,title,place,price,description,images"
+private const val DETAILS_FIELDS_TO_RETRIEVE = "id,dates,title,place,price,body_text,images"
 private const val EXPANDED_FIELDS = "place"
+private const val CONTENT_LANGUAGE_RU = "ru"
+private const val CONTENT_LANGUAGE_EN = "en"

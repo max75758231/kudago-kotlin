@@ -45,8 +45,6 @@
             android:layout_marginRight="@dimen/main_item_component_margin_16dp"
             android:layout_marginBottom="@dimen/main_item_component_margin_8dp"
             android:textColor="@color/colorTvBlack"
-            android:maxLines="2"
-            android:ellipsize="end"
             tools:text="@string/item_details"/>
 
         <TextView
