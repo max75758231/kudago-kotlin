@@ -1,6 +1,5 @@
 package com.android.kudago_kotlin.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -9,11 +8,12 @@ import androidx.paging.PagedList
 import com.android.kudago_kotlin.App
 import com.android.kudago_kotlin.R
 import com.android.kudago_kotlin.domain.Events
+import com.android.kudago_kotlin.ui.base.BaseActivity
 import com.android.kudago_kotlin.util.setVisible
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
