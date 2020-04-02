@@ -12,8 +12,10 @@ import com.android.kudago_kotlin.App
 import com.android.kudago_kotlin.R
 import com.android.kudago_kotlin.ui.base.BaseActivity
 import com.android.kudago_kotlin.util.setTextOrHideIfNull
+import com.android.kudago_kotlin.util.setVisible
 import com.android.kudago_kotlin.util.toast
 import kotlinx.android.synthetic.main.activity_details.*
+import kotlinx.android.synthetic.main.toolbar_details.*
 import me.relex.circleindicator.CircleIndicator
 import javax.inject.Inject
 
@@ -33,6 +35,7 @@ class EventDetailsActivity : BaseActivity() {
         eventDetailsViewModel = ViewModelProviders.of(this, viewModelFactory)[EventDetailsViewModel::class.java]
 
         eventDetailsViewModel.eventDetails.observe(this, Observer { event ->
+            showProgress(false)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 tv_descr_full.text = Html.fromHtml(event.fullDescription, Html.FROM_HTML_MODE_COMPACT)
             } else {
@@ -50,6 +53,8 @@ class EventDetailsActivity : BaseActivity() {
         eventId?.let {
             eventDetailsViewModel.loadDetails(it)
         } ?: toast("Ошибка получения информации")
+
+        btn_back_details.setOnClickListener { onBackPressed() }
     }
 
     private fun initImagesViewPager(images: List<String>) {
@@ -60,5 +65,10 @@ class EventDetailsActivity : BaseActivity() {
         val indicator = findViewById<CircleIndicator>(R.id.circle_indicator)
         viewPager.adapter = adapter
         indicator.setViewPager(viewPager)
+    }
+
+    private fun showProgress(isVisible: Boolean) {
+        pb_details.setVisible(isVisible)
+        frame_layout_details.setVisible(!isVisible)
     }
 }

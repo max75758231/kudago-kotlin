@@ -8,8 +8,10 @@
     android:background="@color/colorPrimary">
 
     <FrameLayout
+        android:id="@+id/frame_layout_details"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_scroll"
@@ -151,5 +153,11 @@
         <include layout="@layout/toolbar_details"/>
 
     </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
