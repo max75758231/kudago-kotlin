@@ -1,6 +1,7 @@
 package com.android.kudago_kotlin.model.data.server.entity
 
 import com.android.kudago_kotlin.domain.Events
+import com.android.kudago_kotlin.util.DateUtil
 
 data class Events(
     val count: Int,
@@ -54,8 +55,11 @@ data class Events(
             title = title,
             description = description,
             place = place?.toDomainModel(),
-            dates = dates?.map { it.toDomainModel() },
-            price = price
+            dates = dates?.first()?.let {
+                if (it.start == null || it.end == null) return@let null
+                DateUtil.convertDatesPeriod(it.start, it.end)
+            },
+            price = if (price.isEmpty()) null else price
         )
     }
 

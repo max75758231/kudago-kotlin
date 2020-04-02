@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.android.kudago_kotlin.R
 import com.android.kudago_kotlin.domain.Events
+import com.android.kudago_kotlin.util.setTextOrHideIfNull
+import com.android.kudago_kotlin.util.setVisible
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_event.*
 import kotlinx.android.synthetic.main.item_event.view.*
@@ -68,6 +70,9 @@ class EventsAdapter : PagedListAdapter<Events.Event, RecyclerView.ViewHolder>(Ev
             with(containerView) {
                 tv_title.text = event.title
                 tv_details.text = event.description
+                tv_location.setTextOrHideIfNull(event.place?.title)
+                tv_date.setTextOrHideIfNull(event.dates)
+                tv_price.setTextOrHideIfNull(event.price)
             }
         }
     }

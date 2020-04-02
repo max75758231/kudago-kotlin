@@ -49,71 +49,44 @@
             android:ellipsize="end"
             tools:text="@string/item_details"/>
 
-        <LinearLayout
-            android:id="@+id/main_item_layout_location"
+        <TextView
+            android:id="@+id/tv_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
             android:layout_marginRight="@dimen/main_item_component_margin_16dp"
-            android:layout_marginBottom="@dimen/main_item_component_margin_8dp">
+            android:layout_marginBottom="@dimen/main_item_component_margin_8dp"
+            android:paddingStart="4dp"
+            tools:text="@string/item_info_location"
+            android:drawableStart="@drawable/ic_location"
+            android:drawablePadding="16dp"
+            style="@style/TextInfo"/>
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                app:srcCompat="@drawable/ic_location"
-                android:scaleType="center"/>
-
-            <TextView
-                android:id="@+id/tv_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="@string/item_info_location"
-                style="@style/TextInfo"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/main_item_layout_date"
+        <TextView
+            android:id="@+id/tv_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
             android:layout_marginRight="@dimen/main_item_component_margin_16dp"
-            android:layout_marginBottom="@dimen/main_item_component_margin_8dp">
+            android:layout_marginBottom="@dimen/main_item_component_margin_8dp"
+            android:paddingStart="4dp"
+            android:drawableStart="@drawable/ic_date"
+            android:drawablePadding="12dp"
+            tools:text="@string/item_info_date"
+            style="@style/TextInfo"/>
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                app:srcCompat="@drawable/ic_date"
-                android:scaleType="center"/>
-
-            <TextView
-                android:id="@+id/tv_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="@string/item_info_date"
-                style="@style/TextInfo"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/main_item_layout_price"
+        <TextView
+            android:id="@+id/tv_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
             android:layout_marginRight="@dimen/main_item_component_margin_16dp"
-            android:layout_marginBottom="@dimen/main_item_component_margin_16dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                app:srcCompat="@drawable/ic_ruble"
-                android:scaleType="center"/>
-
-            <TextView
-                android:id="@+id/tv_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="@string/item_info_price"
-                style="@style/TextInfo"/>
-        </LinearLayout>
+            android:layout_marginBottom="@dimen/main_item_component_margin_16dp"
+            android:paddingStart="4dp"
+            android:drawableStart="@drawable/ic_ruble"
+            android:drawablePadding="18dp"
+            tools:text="@string/item_info_price"
+            style="@style/TextInfo"/>
 
     </LinearLayout>
 

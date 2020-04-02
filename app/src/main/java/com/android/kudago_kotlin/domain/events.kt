@@ -13,8 +13,8 @@ data class Events(
         val title: String,
         val description: String,
         val place: Place?,
-        val dates: List<Date>?,
-        val price: String
+        val dates: String?,
+        val price: String?
     ) {
 
         data class Image(
