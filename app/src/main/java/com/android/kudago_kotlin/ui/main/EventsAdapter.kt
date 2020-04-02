@@ -77,6 +77,9 @@ class EventsAdapter : PagedListAdapter<Events.Event, RecyclerView.ViewHolder>(Ev
                 event.images?.let {
                     Glide.with(iv_image)
                         .load(it[0].imageUrl)
+                        .placeholder(R.drawable.ic_image_placeholder)
+                        .override(600, 280)
+                        .fitCenter()
                         .into(iv_image)
                 }
             }
