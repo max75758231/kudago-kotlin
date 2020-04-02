@@ -9,10 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.kudago_kotlin.R
 import com.android.kudago_kotlin.domain.Events
 import com.android.kudago_kotlin.util.setTextOrHideIfNull
-import com.android.kudago_kotlin.util.setVisible
 import com.bumptech.glide.Glide
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_event.*
 import kotlinx.android.synthetic.main.item_event.view.*
 
 class EventsAdapter : PagedListAdapter<Events.Event, RecyclerView.ViewHolder>(EventsDiffUtil()) {
@@ -78,7 +76,7 @@ class EventsAdapter : PagedListAdapter<Events.Event, RecyclerView.ViewHolder>(Ev
                     Glide.with(iv_image)
                         .load(it[0].imageUrl)
                         .placeholder(R.drawable.ic_image_placeholder)
-                        .override(600, 280)
+                        .override(EVENT_IMAGE_WIDTH, EVENT_IMAGE_HEIGHT)
                         .fitCenter()
                         .into(iv_image)
                 }
@@ -104,3 +102,6 @@ class EventsAdapter : PagedListAdapter<Events.Event, RecyclerView.ViewHolder>(Ev
         OK
     }
 }
+
+private const val EVENT_IMAGE_WIDTH = 600
+private const val EVENT_IMAGE_HEIGHT = 280

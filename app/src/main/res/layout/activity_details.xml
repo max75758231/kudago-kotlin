@@ -2,7 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/details_coordinator"
+    android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
@@ -12,14 +12,14 @@
         android:layout_height="match_parent">
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/details_nested_scroll"
+            android:id="@+id/nested_scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:background="@color/colorPrimary">
 
             <LinearLayout
-                android:id="@+id/details_linear_layout_content"
+                android:id="@+id/linear_layout_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -29,7 +29,7 @@
                     android:layout_height="@dimen/details_iv_height_260dp">
 
                     <androidx.viewpager.widget.ViewPager
-                        android:id="@+id/details_viewpager"
+                        android:id="@+id/viewpager"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
 
@@ -52,7 +52,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/details_title"
+                        android:id="@+id/tv_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/details_title_margin_24dp"
@@ -66,7 +66,7 @@
                         tools:text="Музыкальный фестиваль LiveFest Summer"/>
 
                     <TextView
-                        android:id="@+id/details_subtitle"
+                        android:id="@+id/tv_subtitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/details_component_margin_16dp"
@@ -77,7 +77,7 @@
                         tools:text="@string/details_text"/>
 
                     <TextView
-                        android:id="@+id/details_full_descr"
+                        android:id="@+id/tv_descr_full"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/details_component_margin_16dp"
@@ -93,95 +93,68 @@
                     android:layout_marginBottom="@dimen/details_component_margin_24dp"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:id="@+id/details_layout_location"
+                    <TextView
+                        android:id="@+id/tv_location"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/details_component_margin_16dp"
-                        android:layout_marginRight="@dimen/details_component_margin_16dp"
-                        android:layout_marginTop="@dimen/details_component_margin_8dp">
+                        android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
+                        android:layout_marginRight="@dimen/main_item_component_margin_16dp"
+                        android:layout_marginBottom="@dimen/main_item_component_margin_8dp"
+                        android:paddingStart="4dp"
+                        tools:text="@string/item_info_location"
+                        android:drawableStart="@drawable/ic_location"
+                        android:drawablePadding="16dp"
+                        style="@style/TextInfo"/>
 
-                        <ImageView
-                            android:layout_width="@dimen/details_info_image_size_24dp"
-                            android:layout_height="@dimen/details_info_image_size_24dp"
-                            app:srcCompat="@drawable/ic_location"
-                            android:scaleType="center"/>
-
-                        <TextView
-                            android:id="@+id/details_tv_info_location"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:text="@string/item_info_location"
-                            style="@style/TextInfo"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/details_layout_date"
+                    <TextView
+                        android:id="@+id/tv_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/details_component_margin_16dp"
-                        android:layout_marginRight="@dimen/details_component_margin_16dp"
-                        android:layout_marginTop="@dimen/details_component_margin_8dp">
+                        android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
+                        android:layout_marginRight="@dimen/main_item_component_margin_16dp"
+                        android:layout_marginBottom="@dimen/main_item_component_margin_8dp"
+                        android:paddingStart="4dp"
+                        android:drawableStart="@drawable/ic_date"
+                        android:drawablePadding="12dp"
+                        tools:text="@string/item_info_date"
+                        style="@style/TextInfo"/>
 
-                        <ImageView
-                            android:layout_width="@dimen/details_info_image_size_24dp"
-                            android:layout_height="@dimen/details_info_image_size_24dp"
-                            app:srcCompat="@drawable/ic_date"
-                            android:scaleType="center"/>
-
-                        <TextView
-                            android:id="@+id/details_tv_info_date"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:text="@string/item_info_date"
-                            style="@style/TextInfo"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/details_layout_price"
+                    <TextView
+                        android:id="@+id/tv_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/details_component_margin_8dp"
-                        android:layout_marginLeft="@dimen/details_component_margin_16dp"
-                        android:layout_marginRight="@dimen/details_component_margin_16dp">
-
-                        <ImageView
-                            android:layout_width="@dimen/details_info_image_size_24dp"
-                            android:layout_height="@dimen/details_info_image_size_24dp"
-                            app:srcCompat="@drawable/ic_ruble"
-                            android:scaleType="center"/>
-
-                        <TextView
-                            android:id="@+id/details_tv_info_price"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:text="@string/item_info_price"
-                            style="@style/TextInfo"/>
-                    </LinearLayout>
+                        android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
+                        android:layout_marginRight="@dimen/main_item_component_margin_16dp"
+                        android:layout_marginBottom="@dimen/main_item_component_margin_16dp"
+                        android:paddingStart="4dp"
+                        android:drawableStart="@drawable/ic_ruble"
+                        android:drawablePadding="18dp"
+                        tools:text="@string/item_info_price"
+                        style="@style/TextInfo"/>
                 </LinearLayout>
 
-<!--                <FrameLayout-->
-<!--                    android:id="@+id/details_layout_map"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content">-->
+                <FrameLayout
+                    android:id="@+id/layout_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-<!--                    <com.google.android.gms.maps.MapView-->
-<!--                        android:id="@+id/details_map_view"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="@dimen/details_map_height_200dp"/>-->
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/map_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/details_map_height_200dp"/>
 
-<!--                    <Button-->
-<!--                        android:id="@+id/details_btn_navigate"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="@string/details_btn_navigate_label"-->
-<!--                        android:layout_gravity="center_horizontal|bottom"-->
-<!--                        android:layout_marginBottom="@dimen/details_component_margin_16dp"-->
-<!--                        android:background="@drawable/details_navigate_btn_rounded"-->
-<!--                        android:paddingLeft="@dimen/details_component_margin_8dp"-->
-<!--                        android:paddingRight="@dimen/details_component_margin_8dp"-->
-<!--                        android:textColor="@color/colorAccent"/>-->
-<!--                </FrameLayout>-->
+                    <Button
+                        android:id="@+id/btn_map_navigate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/details_btn_navigate_label"
+                        android:layout_gravity="center_horizontal|bottom"
+                        android:layout_marginBottom="@dimen/details_component_margin_16dp"
+                        android:background="@drawable/details_navigate_btn_rounded"
+                        android:paddingLeft="@dimen/details_component_margin_8dp"
+                        android:paddingRight="@dimen/details_component_margin_8dp"
+                        android:textColor="@color/colorAccent"/>
+                </FrameLayout>
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
