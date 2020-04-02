@@ -6,9 +6,12 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("events/?fields=id,dates,title,place,price,description,images&expand=place")
-    suspend fun getEvents(@Query("page_size") pageSize: Int? = 20,
-                          @Query("page") page: String): Events
+    @GET("events/")
+    suspend fun getEvents(@Query("fields") fields: String,
+                          @Query("page_size") pageSize: Int,
+                          @Query("page") page: String,
+                          @Query("text_format") textFormat: String,
+                          @Query("expand") expandedField: String): Events
 
     @GET("locations/")
     suspend fun getCities()
