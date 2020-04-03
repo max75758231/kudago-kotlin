@@ -25,7 +25,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        App().component.inject(this)
+        App.component.inject(this)
 
         rv_events.adapter = EventsAdapter { eventId -> onEventClicked(eventId) }
         eventsViewModel = ViewModelProviders.of(this, viewModelFactory)[MainViewModel::class.java]

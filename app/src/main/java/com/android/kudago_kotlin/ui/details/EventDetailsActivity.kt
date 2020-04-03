@@ -42,7 +42,7 @@ class EventDetailsActivity : BaseActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
-        App().component.inject(this)
+        App.component.inject(this)
 
         val eventId = intent.extras?.getLong("event_id")
 

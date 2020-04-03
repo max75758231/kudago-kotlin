@@ -1,10 +1,13 @@
 package com.android.kudago_kotlin.model.data.repository
 
 import com.android.kudago_kotlin.model.data.server.ApiService
+import com.android.kudago_kotlin.model.data.storage.Prefs
+import com.android.kudago_kotlin.util.CitySlugUtil
 import javax.inject.Inject
 
 class EventsRepository @Inject constructor(
-    private val api: ApiService
+    private val api: ApiService,
+    private val prefs: Prefs
 ) {
 
     suspend fun getEvents(page: String, size: Int) =
@@ -12,7 +15,8 @@ class EventsRepository @Inject constructor(
                       size,
                       page,
                       TextFormat.TEXT.toString().toLowerCase(),
-                      EXPANDED_FIELDS
+                      EXPANDED_FIELDS,
+                      CitySlugUtil.getSlugByCity(prefs.searchCity)
         ).toDomainModel()
 
     suspend fun getEventDetails(eventId: Long) =

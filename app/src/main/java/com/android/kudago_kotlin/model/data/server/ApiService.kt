@@ -13,7 +13,8 @@ interface ApiService {
                           @Query("page_size") pageSize: Int,
                           @Query("page") page: String,
                           @Query("text_format") textFormat: String,
-                          @Query("expand") expandedFields: String): Events
+                          @Query("expand") expandedFields: String,
+                          @Query("location") citySlug: String): Events
 
     @GET("events/{event_id}/")
     suspend fun getEventDetails(@Path("event_id") eventId: Long,
