@@ -54,10 +54,10 @@
             android:layout_marginLeft="@dimen/margin_16dp"
             android:layout_marginRight="@dimen/margin_16dp"
             android:layout_marginTop="@dimen/margin_8dp"
-            android:paddingStart="4dp"
+            android:paddingStart="@dimen/margin_4dp"
             tools:text="ЦПКиО им. Горького"
             android:drawableStart="@drawable/ic_location"
-            android:drawablePadding="16dp"
+            android:drawablePadding="@dimen/margin_16dp"
             style="@style/TextInfo"/>
 
         <TextView
@@ -67,9 +67,9 @@
             android:layout_marginLeft="@dimen/margin_16dp"
             android:layout_marginRight="@dimen/margin_16dp"
             android:layout_marginTop="@dimen/margin_8dp"
-            android:paddingStart="4dp"
+            android:paddingStart="@dimen/margin_4dp"
             android:drawableStart="@drawable/ic_date"
-            android:drawablePadding="12dp"
+            android:drawablePadding="@dimen/margin_12dp"
             tools:text="10-11 августа"
             style="@style/TextInfo"/>
 
@@ -80,9 +80,9 @@
             android:layout_marginLeft="@dimen/margin_16dp"
             android:layout_marginRight="@dimen/margin_16dp"
             android:layout_marginTop="@dimen/margin_8dp"
-            android:paddingStart="4dp"
+            android:paddingStart="@dimen/margin_4dp"
             android:drawableStart="@drawable/ic_ruble"
-            android:drawablePadding="18dp"
+            android:drawablePadding="@dimen/margin_18dp"
             tools:text="1 200 - 1 500 Р"
             style="@style/TextInfo"/>
 
