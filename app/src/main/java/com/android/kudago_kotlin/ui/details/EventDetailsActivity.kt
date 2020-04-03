@@ -64,7 +64,7 @@ class EventDetailsActivity : BaseActivity(), OnMapReadyCallback {
 
             event.place?.let {
                 initMap(it.coords.latitude, it.coords.longitude)
-            }
+            } ?: hideMapView()
         })
 
         eventId?.let {
@@ -96,6 +96,11 @@ class EventDetailsActivity : BaseActivity(), OnMapReadyCallback {
     private fun showProgress(isVisible: Boolean) {
         pb_details.setVisible(isVisible)
         frame_layout_details.setVisible(!isVisible)
+    }
+
+    private fun hideMapView() {
+        map_view.setVisible(false)
+        btn_map_navigate.setVisible(false)
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
