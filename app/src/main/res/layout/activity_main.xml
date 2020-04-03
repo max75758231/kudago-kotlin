@@ -53,8 +53,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginEnd="@dimen/main_no_internet_margin_16dp"
-        android:layout_marginStart="@dimen/main_no_internet_margin_16dp"
+        android:layout_marginEnd="@dimen/margin_16dp"
+        android:layout_marginStart="@dimen/margin_16dp"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -68,11 +68,11 @@
             android:id="@+id/tv_no_internet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/main_no_internet_margin_26dp"
+            android:layout_marginTop="@dimen/margin_24dp"
             android:gravity="center"
             android:text="@string/main_tv_no_internet"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/main_no_internet_size_16sp"
+            android:textSize="@dimen/text_size_16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />

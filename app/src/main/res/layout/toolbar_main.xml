@@ -37,7 +37,7 @@
             android:layout_marginRight="8dp"
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/colorAccent"
-            android:textSize="@dimen/city_item_size_16sp"
+            android:textSize="@dimen/text_size_16sp"
             android:text="Москва" />
 
         <ImageView

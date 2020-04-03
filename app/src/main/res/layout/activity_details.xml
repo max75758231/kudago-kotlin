@@ -40,29 +40,29 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center_horizontal"
-                        android:layout_marginBottom="@dimen/details_component_margin_8dp"
+                        android:layout_marginBottom="@dimen/margin_8dp"
                         app:ci_drawable_unselected="@drawable/dot_not_selected"
                         app:ci_drawable="@drawable/dot_selected"
                         app:ci_animator="@animator/circle_animator"
-                        app:ci_height="@dimen/details_page_indicator_size_8dp"
-                        app:ci_width="@dimen/details_page_indicator_size_8dp"/>
+                        app:ci_height="@dimen/margin_8dp"
+                        app:ci_width="@dimen/margin_8dp"/>
                 </FrameLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/details_component_margin_16dp"
+                    android:layout_marginBottom="@dimen/margin_16dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tv_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/details_title_margin_24dp"
-                        android:layout_marginLeft="@dimen/details_component_margin_16dp"
-                        android:layout_marginRight="@dimen/details_component_margin_16dp"
-                        android:layout_marginBottom="@dimen/details_component_margin_16dp"
+                        android:layout_marginTop="@dimen/margin_24dp"
+                        android:layout_marginLeft="@dimen/margin_16dp"
+                        android:layout_marginRight="@dimen/margin_16dp"
+                        android:layout_marginBottom="@dimen/margin_16dp"
                         android:textAllCaps="true"
-                        android:textSize="@dimen/details_title_size_20sp"
+                        android:textSize="@dimen/text_size_20sp"
                         android:textColor="@color/colorTvBlack"
                         android:textStyle="bold"
                         tools:text="Музыкальный фестиваль LiveFest Summer"/>
@@ -71,28 +71,28 @@
                         android:id="@+id/tv_descr_full"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/details_component_margin_16dp"
-                        android:layout_marginRight="@dimen/details_component_margin_16dp"
-                        android:textSize="@dimen/details_text_size_16sp"
+                        android:layout_marginLeft="@dimen/margin_16dp"
+                        android:layout_marginRight="@dimen/margin_16dp"
+                        android:textSize="@dimen/text_size_16sp"
                         android:textColor="@color/colorTvInfoGrey"
-                        tools:text="@string/details_text"/>
+                        tools:text="@tools:sample/lorem/random"/>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/details_component_margin_24dp"
+                    android:layout_marginBottom="@dimen/margin_24dp"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/tv_location"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
-                        android:layout_marginRight="@dimen/main_item_component_margin_16dp"
-                        android:layout_marginBottom="@dimen/main_item_component_margin_8dp"
+                        android:layout_marginLeft="@dimen/margin_16dp"
+                        android:layout_marginRight="@dimen/margin_16dp"
+                        android:layout_marginBottom="@dimen/margin_8dp"
                         android:paddingStart="4dp"
-                        tools:text="@string/item_info_location"
+                        tools:text="ЦКПО им. Горького"
                         android:drawableStart="@drawable/ic_location"
                         android:drawablePadding="16dp"
                         style="@style/TextInfo"/>
@@ -101,26 +101,26 @@
                         android:id="@+id/tv_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
-                        android:layout_marginRight="@dimen/main_item_component_margin_16dp"
-                        android:layout_marginBottom="@dimen/main_item_component_margin_8dp"
+                        android:layout_marginLeft="@dimen/margin_16dp"
+                        android:layout_marginRight="@dimen/margin_16dp"
+                        android:layout_marginBottom="@dimen/margin_8dp"
                         android:paddingStart="4dp"
                         android:drawableStart="@drawable/ic_date"
                         android:drawablePadding="12dp"
-                        tools:text="@string/item_info_date"
+                        tools:text="10-11 августа"
                         style="@style/TextInfo"/>
 
                     <TextView
                         android:id="@+id/tv_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/main_item_component_margin_16dp"
-                        android:layout_marginRight="@dimen/main_item_component_margin_16dp"
-                        android:layout_marginBottom="@dimen/main_item_component_margin_16dp"
+                        android:layout_marginLeft="@dimen/margin_16dp"
+                        android:layout_marginRight="@dimen/margin_16dp"
+                        android:layout_marginBottom="@dimen/margin_16dp"
                         android:paddingStart="4dp"
                         android:drawableStart="@drawable/ic_ruble"
                         android:drawablePadding="18dp"
-                        tools:text="@string/item_info_price"
+                        tools:text="1200 - 1500 Р"
                         style="@style/TextInfo"/>
                 </LinearLayout>
 
@@ -140,10 +140,10 @@
                         android:layout_height="wrap_content"
                         android:text="@string/details_btn_navigate_label"
                         android:layout_gravity="center_horizontal|bottom"
-                        android:layout_marginBottom="@dimen/details_component_margin_16dp"
+                        android:layout_marginBottom="@dimen/margin_16dp"
                         android:background="@drawable/details_navigate_btn_rounded"
-                        android:paddingLeft="@dimen/details_component_margin_8dp"
-                        android:paddingRight="@dimen/details_component_margin_8dp"
+                        android:paddingLeft="@dimen/margin_8dp"
+                        android:paddingRight="@dimen/margin_8dp"
                         android:textColor="@color/colorAccent"/>
                 </FrameLayout>
             </LinearLayout>

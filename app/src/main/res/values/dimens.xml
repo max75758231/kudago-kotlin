@@ -5,56 +5,42 @@
     <!-- General dimens -->
     <dimen name="toolbar_height_56dp">56dp</dimen>
 
+    <!-- Margin patterns -->
+    <dimen name="margin_4dp">4dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_12dp">12dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
+    <dimen name="margin_24dp">24dp</dimen>
+    <dimen name="margin_28dp">28dp</dimen>
+    <dimen name="margin_32dp">32dp</dimen>
+    <dimen name="margin_36dp">36dp</dimen>
+    <dimen name="margin_40dp">40dp</dimen>
+
+    <!-- Text size patterns -->
+    <dimen name="text_size_8sp">8sp</dimen>
+    <dimen name="text_size_10sp">10sp</dimen>
+    <dimen name="text_size_12sp">12sp</dimen>
+    <dimen name="text_size_14sp">14sp</dimen>
+    <dimen name="text_size_16sp">16sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_20sp">20sp</dimen>
+    <dimen name="text_size_22sp">22sp</dimen>
+    <dimen name="text_size_24sp">24sp</dimen>
+    <dimen name="text_size_26sp">26sp</dimen>
+
     <!-- Main screen -->
     <dimen name="main_toolbar_tall_height_68dp">68dp</dimen>
-    <dimen name="main_title_margin_16dp">16dp</dimen>
-    <dimen name="main_rv_margin_8dp">8dp</dimen>
-    <dimen name="main_rv_margin_16dp">16dp</dimen>
-    <dimen name="main_pb_size_32dp">32dp</dimen>
-    <dimen name="main_no_internet_margin_16dp">16dp</dimen>
-    <dimen name="main_no_internet_margin_26dp">26dp</dimen>
 
     <!-- Main list item -->
-    <dimen name="main_item_card_radius_8dp">8dp</dimen>
-    <dimen name="main_item_card_margin_16dp">16dp</dimen>
     <dimen name="main_item_iv_height_160dp">160dp</dimen>
-    <dimen name="main_item_component_margin_8dp">8dp</dimen>
-    <dimen name="main_item_component_margin_16dp">16dp</dimen>
     <dimen name="main_item_error_height_56dp">56dp</dimen>
 
     <!-- Details screen -->
     <dimen name="details_iv_height_260dp">260dp</dimen>
-    <dimen name="details_component_margin_8dp">8dp</dimen>
-    <dimen name="details_component_margin_14dp">14dp</dimen>
-    <dimen name="details_component_margin_16dp">16dp</dimen>
-    <dimen name="details_title_margin_24dp">24dp</dimen>
     <dimen name="details_map_height_200dp">200dp</dimen>
-    <dimen name="details_info_margin_24dp">24dp</dimen>
-    <dimen name="details_page_indicator_size_8dp">8dp</dimen>
-    <dimen name="details_component_margin_24dp">24dp</dimen>
-    <dimen name="details_info_image_size_24dp">24dp</dimen>
     <dimen name="details_btn_back_width_48dp">48dp</dimen>
-    <dimen name="details_btn_back_height_32dp">32dp</dimen>
 
     <!-- City list item -->
     <dimen name="city_item_height_56dp">56dp</dimen>
-
-    <!--                                   FONT DIMENS                                           -->
-
-    <!-- Main screen -->
-    <dimen name="main_title_size_30sp">30sp</dimen>
-    <dimen name="main_no_internet_size_16sp">16sp</dimen>
-
-    <!-- Main list item -->
-    <dimen name="main_item_title_size_16sp">16sp</dimen>
-    <dimen name="main_item_detail_size_14sp">14sp</dimen>
-    <dimen name="main_item_info_size_14sp">14sp</dimen>
-
-    <!-- Details screen -->
-    <dimen name="details_title_size_20sp">20sp</dimen>
-    <dimen name="details_text_size_16sp">16sp</dimen>
-    <dimen name="details_info_size_14sp">14sp</dimen>
-
-    <!-- City list item -->
-    <dimen name="city_item_size_16sp">16sp</dimen>
 </resources>

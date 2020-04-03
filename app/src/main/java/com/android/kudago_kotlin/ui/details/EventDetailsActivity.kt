@@ -16,6 +16,7 @@ import androidx.viewpager.widget.ViewPager
 import com.android.kudago_kotlin.App
 import com.android.kudago_kotlin.R
 import com.android.kudago_kotlin.ui.base.BaseActivity
+import com.android.kudago_kotlin.util.setLinkableHtmlText
 import com.android.kudago_kotlin.util.setTextOrHideIfNull
 import com.android.kudago_kotlin.util.setVisible
 import com.android.kudago_kotlin.util.toast
@@ -49,11 +50,7 @@ class EventDetailsActivity : BaseActivity(), OnMapReadyCallback {
 
         eventDetailsViewModel.eventDetails.observe(this, Observer { event ->
             showProgress(false)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                tv_descr_full.text = Html.fromHtml(event.fullDescription, Html.FROM_HTML_MODE_COMPACT)
-            } else {
-                tv_descr_full.text = Html.fromHtml(event.fullDescription)
-            }
+            tv_descr_full.setLinkableHtmlText(event.fullDescription)
             tv_descr_full.movementMethod = LinkMovementMethod.getInstance()
             tv_title.text = event.title
             tv_location.setTextOrHideIfNull(event.place?.title)
