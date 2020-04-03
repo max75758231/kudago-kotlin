@@ -17,34 +17,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/main_toolbar_city_layout"
+    <TextView
+        android:id="@+id/main_toolbar_tv_city"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_8dp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/text_size_16sp"
+        android:text="@string/main_city_default"
         android:gravity="center_vertical"
-        android:layout_marginBottom="@dimen/margin_8dp"
-        android:layout_marginEnd="@dimen/margin_16dp"
-        android:layout_marginTop="@dimen/margin_16dp"
+        android:drawableEnd="@drawable/ic_toolbar_arrow_down"
+        android:drawablePadding="@dimen/margin_8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/main_toolbar_tv_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/margin_8dp"
-            android:fontFamily="sans-serif-medium"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/text_size_16sp"
-            android:text="Москва" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            app:srcCompat="@drawable/ic_toolbar_arrow_down"/>
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
