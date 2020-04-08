@@ -6,6 +6,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.android.kudago_kotlin.R
 import com.android.kudago_kotlin.domain.City
+import com.android.kudago_kotlin.util.setVisible
 import kotlinx.android.synthetic.main.item_city.view.*
 
 class CitiesAdapter(
@@ -31,6 +32,7 @@ class CitiesAdapter(
 
         fun bind(city: City) {
             itemView.tv_city.text = city.name
+            itemView.iv_city_checked.setVisible(city.isSelected)
 
             itemView.setOnClickListener { citySelectedListener.onCitySelected(city) }
         }

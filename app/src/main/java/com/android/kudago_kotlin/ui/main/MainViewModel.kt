@@ -46,10 +46,6 @@ class MainViewModel @Inject constructor(
         cityLiveData.value = citiesInteractor.getCity()
     }
 
-    fun updateData() {
-        eventsLiveData.value?.dataSource?.invalidate()
-    }
-
     private fun getPagedListBuilder(config: PagedList.Config):
             LivePagedListBuilder<String, Events.Event> {
 
@@ -65,6 +61,10 @@ class MainViewModel @Inject constructor(
             }
         }
         return LivePagedListBuilder<String, Events.Event>(dataSourceFactory, config)
+    }
+
+    fun updateEventsData() {
+        eventsLiveData.value?.dataSource?.invalidate()
     }
 
     fun updateCity(city: City) {

@@ -23,24 +23,27 @@ class CitiesDialogFragment(val onCitySelectionResultListener: OnCitySelectionRes
     private var dialog: AlertDialog? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val builder: AlertDialog.Builder = AlertDialog.Builder(activity!!, R.style.CitiesDialog)
-        builder.setView(activity?.layoutInflater?.inflate(R.layout.dialog_cities, null))
         App.component.inject(this)
 
-        citiesViewModel = ViewModelProviders.of(this, viewModelFactory)[CitiesViewModel::class.java]
+        activity?.let { activity ->
+            val builder: AlertDialog.Builder = AlertDialog.Builder(activity, R.style.CitiesDialog)
+            builder.setView(activity.layoutInflater.inflate(R.layout.dialog_cities, null))
 
-        citiesViewModel.cities.observe(this, Observer {
-            showProgress(false)
-            dialog?.rv_cities?.adapter = CitiesAdapter(it, object : OnCitySelectedListener {
-                override fun onCitySelected(city: City) {
-                    onCitySelectionResultListener.onCitySelectedSuccess(city)
-                    dismiss()
-                }
+            citiesViewModel = ViewModelProviders.of(this, viewModelFactory)[CitiesViewModel::class.java]
+            citiesViewModel.cities.observe(this, Observer {
+                showProgress(false)
+                dialog?.rv_cities?.adapter = CitiesAdapter(it, object : OnCitySelectedListener {
+                    override fun onCitySelected(city: City) {
+                        onCitySelectionResultListener.onCitySelectedSuccess(city)
+                        dismiss()
+                    }
+                })
             })
-        })
-        citiesViewModel.loadCities()
 
-        dialog = builder.create()
+            citiesViewModel.loadCities()
+
+            dialog = builder.create()
+        }
 
         return dialog as AlertDialog
     }

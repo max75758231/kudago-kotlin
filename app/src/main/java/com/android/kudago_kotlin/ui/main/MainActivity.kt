@@ -45,7 +45,7 @@ class MainActivity : BaseActivity() {
                 override fun onCitySelectedSuccess(city: City) {
                     eventsViewModel.updateCity(city)
                     tv_toolbar_city.text = city.name
-                    eventsViewModel.updateData()
+                    eventsViewModel.updateEventsData()
                 }
             })
             citiesDialog.show(supportFragmentManager, CitiesDialogFragment::class.java.name)
