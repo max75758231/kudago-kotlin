@@ -1,5 +1,6 @@
 package com.android.kudago_kotlin.model.data.server
 
+import com.android.kudago_kotlin.model.data.server.entity.City
 import com.android.kudago_kotlin.model.data.server.entity.Event
 import com.android.kudago_kotlin.model.data.server.entity.Events
 import retrofit2.http.GET
@@ -24,5 +25,5 @@ interface ApiService {
                                 @Query("text_format") textFormat: String): Event
 
     @GET("locations/")
-    suspend fun getCities()
+    suspend fun getCities(@Query("order_by") orderBy: String): List<City>
 }

@@ -1,13 +1,14 @@
 package com.android.kudago_kotlin
 
 import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.android.kudago_kotlin.di.AppComponent
 import com.android.kudago_kotlin.di.AppModule
 import com.android.kudago_kotlin.di.DaggerAppComponent
 import com.facebook.stetho.Stetho
 
 
-class App : Application() {
+class App : MultiDexApplication() {
 
     companion object {
         lateinit var component: AppComponent

@@ -1,6 +1,7 @@
 package com.android.kudago_kotlin.di
 
 import androidx.lifecycle.ViewModel
+import com.android.kudago_kotlin.ui.cities.CitiesViewModel
 import com.android.kudago_kotlin.ui.details.EventDetailsViewModel
 import com.android.kudago_kotlin.ui.main.MainViewModel
 import dagger.Binds
@@ -19,4 +20,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(EventDetailsViewModel::class)
     abstract fun bindEventDetailsViewModel(eventDetailsViewModel: EventDetailsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CitiesViewModel::class)
+    abstract fun bindCitiesViewModel(citiesViewModel: CitiesViewModel): ViewModel
 }

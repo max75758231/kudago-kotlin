@@ -7,4 +7,6 @@
     <color name="colorTvBlack">#262626</color>
     <color name="colorTvInfoGrey">#666666</color>
     <color name="colorTransparent">#00FFFFFF</color>
+
+    <color name="colorDivider">#E1E1E1</color>
 </resources>

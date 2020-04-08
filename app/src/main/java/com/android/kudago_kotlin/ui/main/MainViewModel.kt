@@ -7,12 +7,15 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.android.kudago_kotlin.domain.Events
 import com.android.kudago_kotlin.model.data.repository.EventsRepository
+import com.android.kudago_kotlin.model.data.server.entity.City
+import com.android.kudago_kotlin.model.interactor.CitiesInteractor
 import com.android.kudago_kotlin.model.interactor.EventsDataSource
 import com.android.kudago_kotlin.ui.base.BaseViewModel
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
-    private val eventsRepository: EventsRepository
+    private val eventsRepository: EventsRepository,
+    private val citiesInteractor: CitiesInteractor
 ) : BaseViewModel() {
 
     private var eventsLiveData: LiveData<PagedList<Events.Event>>
@@ -34,10 +37,14 @@ class MainViewModel @Inject constructor(
             .setEnablePlaceholders(false)
             .build()
 
-        eventsLiveData = initializedPagedListBuilder(config).build()
+        eventsLiveData = getPagedListBuilder(config).build()
     }
 
-    private fun initializedPagedListBuilder(config: PagedList.Config):
+    fun updateData() {
+        eventsLiveData.value?.dataSource?.invalidate()
+    }
+
+    private fun getPagedListBuilder(config: PagedList.Config):
             LivePagedListBuilder<String, Events.Event> {
 
         val dataSourceFactory = object : DataSource.Factory<String, Events.Event>() {
@@ -52,6 +59,10 @@ class MainViewModel @Inject constructor(
             }
         }
         return LivePagedListBuilder<String, Events.Event>(dataSourceFactory, config)
+    }
+
+    fun updateCity(city: City) {
+        citiesInteractor.setCity(city.name)
     }
 }
 

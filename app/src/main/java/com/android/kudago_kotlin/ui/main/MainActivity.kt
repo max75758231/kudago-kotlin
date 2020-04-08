@@ -2,6 +2,7 @@ package com.android.kudago_kotlin.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -9,10 +10,14 @@ import androidx.paging.PagedList
 import com.android.kudago_kotlin.App
 import com.android.kudago_kotlin.R
 import com.android.kudago_kotlin.domain.Events
+import com.android.kudago_kotlin.model.data.server.entity.City
 import com.android.kudago_kotlin.ui.base.BaseActivity
+import com.android.kudago_kotlin.ui.cities.CitiesDialogFragment
+import com.android.kudago_kotlin.ui.cities.OnCitySelectionResultListener
 import com.android.kudago_kotlin.ui.details.EventDetailsActivity
 import com.android.kudago_kotlin.util.setVisible
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar_main.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -34,6 +39,17 @@ class MainActivity : BaseActivity() {
 
         swipe_refresh.setOnRefreshListener {
             eventsViewModel.events.value?.dataSource?.invalidate()
+        }
+
+        tv_toolbar_city.setOnClickListener {
+            val citiesDialog = CitiesDialogFragment(object : OnCitySelectionResultListener {
+                override fun onCitySelectedSuccess(city: City) {
+                    eventsViewModel.updateCity(city)
+                    tv_toolbar_city.text = city.name
+                    eventsViewModel.updateData()
+                }
+            })
+            citiesDialog.show(supportFragmentManager, "cities")
         }
     }
 
