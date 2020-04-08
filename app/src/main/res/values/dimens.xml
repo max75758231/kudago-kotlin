@@ -2,6 +2,7 @@
 <resources>
     <!-- General dimens -->
     <dimen name="toolbar_height_56dp">56dp</dimen>
+    <dimen name="divider_height_1dp">1dp</dimen>
 
     <!-- Margin patterns -->
     <dimen name="margin_4dp">4dp</dimen>
