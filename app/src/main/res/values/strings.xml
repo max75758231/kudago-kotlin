@@ -10,4 +10,5 @@
 
     <!-- Details screen -->
     <string name="details_btn_navigate_label">Проложить маршрут</string>
+    <string name="details_map_navigation_link">https://www.google.com/maps/dir/?api=1&amp;destination=%1$s,%2$s</string>
 </resources>

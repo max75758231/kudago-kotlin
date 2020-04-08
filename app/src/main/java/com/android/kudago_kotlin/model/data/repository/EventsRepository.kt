@@ -24,7 +24,7 @@ class EventsRepository @Inject constructor(
                             CONTENT_LANGUAGE_RU,
                             DETAILS_FIELDS_TO_RETRIEVE,
                             EXPANDED_FIELDS,
-                            TextFormat.HTML.toString().toLowerCase()
+                            TextFormat.TEXT.toString().toLowerCase()
         ).toDomainModel()
 
     enum class TextFormat {

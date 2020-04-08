@@ -11,7 +11,8 @@
         android:id="@+id/frame_layout_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone">
+        android:visibility="gone"
+        tools:visibility="visible">
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_scroll"
@@ -74,7 +75,7 @@
                         android:layout_marginLeft="@dimen/margin_16dp"
                         android:layout_marginRight="@dimen/margin_16dp"
                         android:textSize="@dimen/text_size_16sp"
-                        android:textColor="@color/colorTvInfoGrey"
+                        android:textColor="@color/colorTvBlack"
                         tools:text="@tools:sample/lorem/random"/>
                 </LinearLayout>
 
@@ -158,6 +159,7 @@
         android:id="@+id/pb_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        tools:visibility="gone"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

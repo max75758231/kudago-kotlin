@@ -1,8 +1,10 @@
 package com.android.kudago_kotlin.ui.details
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
@@ -69,6 +71,12 @@ class EventDetailsActivity : BaseActivity(), OnMapReadyCallback {
         } ?: toast("Ошибка получения информации")
 
         btn_back_details.setOnClickListener { onBackPressed() }
+
+        btn_map_navigate.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(getString(R.string.details_map_navigation_link, latitude.toString(), longitude.toString()))
+            startActivity(intent)
+        }
     }
 
     private fun initImagesViewPager(images: List<String>) {
