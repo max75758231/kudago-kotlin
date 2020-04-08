@@ -4,7 +4,6 @@
     <!-- Main screen -->
     <string name="main_title">Куда сходить</string>
     <string name="main_tv_no_internet">Ошибка загрузки данных, проверьте соединение с интернетом</string>
-    <string name="main_snackbar_no_internet">Невозможно загрузить данные, проверьте соединение с интернетом.</string>
     <string name="main_item_error_btn">Повторить</string>
     <string name="main_item_error_tv">Ошибка загрузки</string>
     <string name="main_city_default">Москва</string>
