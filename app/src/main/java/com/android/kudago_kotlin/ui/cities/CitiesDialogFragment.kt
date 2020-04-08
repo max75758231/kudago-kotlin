@@ -1,25 +1,17 @@
 package com.android.kudago_kotlin.ui.cities
 
 import android.app.Dialog
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialogFragment
-import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.android.kudago_kotlin.App
 import com.android.kudago_kotlin.R
-import com.android.kudago_kotlin.model.data.server.entity.City
+import com.android.kudago_kotlin.domain.City
 import com.android.kudago_kotlin.util.setVisible
 import kotlinx.android.synthetic.main.dialog_cities.*
-import kotlinx.android.synthetic.main.dialog_cities.view.*
 import javax.inject.Inject
 
 class CitiesDialogFragment(val onCitySelectionResultListener: OnCitySelectionResultListener) : AppCompatDialogFragment() {

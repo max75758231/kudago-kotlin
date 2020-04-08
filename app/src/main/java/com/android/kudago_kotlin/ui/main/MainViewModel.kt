@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.android.kudago_kotlin.domain.City
 import com.android.kudago_kotlin.domain.Events
 import com.android.kudago_kotlin.model.data.repository.EventsRepository
-import com.android.kudago_kotlin.model.data.server.entity.City
 import com.android.kudago_kotlin.model.interactor.CitiesInteractor
 import com.android.kudago_kotlin.model.interactor.EventsDataSource
 import com.android.kudago_kotlin.ui.base.BaseViewModel
@@ -21,6 +21,10 @@ class MainViewModel @Inject constructor(
     private var eventsLiveData: LiveData<PagedList<Events.Event>>
     val events: LiveData<PagedList<Events.Event>>
         get() = eventsLiveData
+
+    private var cityLiveData: MutableLiveData<String> = MutableLiveData()
+    val city: LiveData<String>
+        get() = cityLiveData
 
     private val progressInitialLiveData: MutableLiveData<Boolean> = MutableLiveData()
     val progressInitial: LiveData<Boolean>
@@ -38,6 +42,8 @@ class MainViewModel @Inject constructor(
             .build()
 
         eventsLiveData = getPagedListBuilder(config).build()
+
+        cityLiveData.value = citiesInteractor.getCity()
     }
 
     fun updateData() {
@@ -54,7 +60,7 @@ class MainViewModel @Inject constructor(
                 dataSource.onPagingLoadingStarted = { progressPagingLiveData.postValue(true) }
                 dataSource.onPagingLoadingFinished = { progressPagingLiveData.postValue(false) }
                 dataSource.onInitialLoadingStarted = { progressInitialLiveData.postValue(true) }
-                dataSource.onInitialLoadingFinished = {progressInitialLiveData.postValue(false)}
+                dataSource.onInitialLoadingFinished = { progressInitialLiveData.postValue(false) }
                 return dataSource
             }
         }

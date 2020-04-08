@@ -3,10 +3,9 @@ package com.android.kudago_kotlin.ui.cities
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android.kudago_kotlin.R
-import com.android.kudago_kotlin.model.data.server.entity.City
+import com.android.kudago_kotlin.domain.City
 import kotlinx.android.synthetic.main.item_city.view.*
 
 class CitiesAdapter(
