@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -40,6 +41,15 @@ class CitiesDialogFragment(val onCitySelectionResultListener: OnCitySelectionRes
                 })
             })
 
+            citiesViewModel.citiesSearch.observe(this, Observer {
+                dialog?.rv_cities?.adapter = CitiesAdapter(it, object : OnCitySelectedListener {
+                    override fun onCitySelected(city: City) {
+                        onCitySelectionResultListener.onCitySelectedSuccess(city)
+                        dismiss()
+                    }
+                })
+            })
+
             citiesViewModel.loadCities()
 
             dialog = builder.create()
@@ -53,6 +63,8 @@ class CitiesDialogFragment(val onCitySelectionResultListener: OnCitySelectionRes
 
         dialog?.let {
             it.btn_back.setOnClickListener { dismiss() }
+
+            it.et_cities_search.addTextChangedListener { citiesViewModel.searchCities(it.toString()) }
         }
 
     }

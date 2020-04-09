@@ -16,9 +16,19 @@ class CitiesViewModel @Inject constructor(
     val cities: LiveData<List<City>>
         get() = citiesLiveData
 
+    private var citiesSearchLiveData: MutableLiveData<List<City>> = MutableLiveData()
+    val citiesSearch: LiveData<List<City>>
+        get() = citiesSearchLiveData
+
     fun loadCities() {
         ioScope.launch {
             citiesLiveData.postValue(citiesInteractor.getCities())
         }
+    }
+
+    fun searchCities(cityname: String) {
+        citiesSearchLiveData.postValue(citiesLiveData.value?.filter {
+            it.name.toLowerCase().contains(cityname)
+        })
     }
 }

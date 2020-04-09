@@ -28,15 +28,17 @@
                 android:background="@drawable/ic_arrow_back"/>
 
             <EditText
+                android:id="@+id/et_cities_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginStart="@dimen/margin_12dp"
                 android:layout_marginEnd="@dimen/margin_12dp"
                 android:hint="@string/city_search_hint"
                 android:includeFontPadding="false"
                 android:fontFamily="sans-serif-thin"
                 android:textColorHint="@color/colorTvBlack"
                 android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_14sp"
                 android:background="@null"/>
 
         </LinearLayout>
