@@ -16,7 +16,7 @@ class EventsRepository @Inject constructor(
                       page,
                       TextFormat.TEXT.toString().toLowerCase(),
                       EXPANDED_FIELDS,
-                      CitySlugUtil.getSlugByCity(prefs.searchCity)
+                      prefs.searchCitySlug
         ).toDomainModel()
 
     suspend fun getEventDetails(eventId: Long) =

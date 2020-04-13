@@ -7,9 +7,22 @@
     <string name="main_item_error_btn">Повторить</string>
     <string name="main_item_error_tv">Ошибка загрузки</string>
     <string name="main_city_default">Москва</string>
+    <string name="main_city_default_slug">msk</string>
     <string name="city_search_hint">Поиск города</string>
 
     <!-- Details screen -->
     <string name="details_btn_navigate_label">Проложить маршрут</string>
     <string name="details_map_navigation_link">https://www.google.com/maps/dir/?api=1&amp;destination=%1$s,%2$s</string>
+
+    <!-- Cities -->
+    <string name="city_msk">Москва</string>
+    <string name="city_spb">Санкт-Петербург</string>
+    <string name="city_nsk">Новосибирск</string>
+    <string name="city_kzn">Казань</string>
+    <string name="city_ekb">Екатеринбург</string>
+    <string name="city_nn">Нижний Новгород</string>
+    <string name="city_ksn">Красноярск</string>
+    <string name="city_krd">Краснодар</string>
+    <string name="city_sochi">Сочи</string>
+    <string name="city_online">Онлайн</string>
 </resources>

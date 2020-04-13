@@ -68,7 +68,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun updateCity(city: City) {
-        citiesInteractor.setCity(city.name)
+        citiesInteractor.setCity(city.slug)
     }
 }
 

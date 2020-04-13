@@ -13,8 +13,8 @@ class Prefs @Inject constructor(
     private fun getSharedPreferences(prefsName: String) =
         context.getSharedPreferences(prefsName, Context.MODE_PRIVATE)
 
-    var searchCity: String
-        get() = appPrefs.getString(KEY_SEARCH_CITY, context.getString(R.string.main_city_default)) ?: context.getString(R.string.main_city_default)
+    var searchCitySlug: String
+        get() = appPrefs.getString(KEY_SEARCH_CITY, context.getString(R.string.main_city_default_slug)) ?: context.getString(R.string.main_city_default_slug)
         set(value) = appPrefs.edit().putString(KEY_SEARCH_CITY, value).apply()
 }
 

@@ -11,10 +11,10 @@ class CitiesRepository @Inject constructor(
 
     suspend fun getCities() = api.getCities(OrderBy.NAME.name.toLowerCase()).map { it.toDomainModel() }
 
-    fun getCity() = prefs.searchCity
+    fun getCity() = prefs.searchCitySlug
 
-    fun setCity(cityname: String) {
-        prefs.searchCity = cityname
+    fun setCity(citySlug: String) {
+        prefs.searchCitySlug = citySlug
     }
 
     enum class OrderBy {
