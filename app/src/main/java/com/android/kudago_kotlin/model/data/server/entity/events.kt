@@ -55,10 +55,7 @@ data class Events(
             title = title,
             description = description,
             place = place?.toDomainModel(),
-            dates = dates?.first()?.let {
-                if (it.start == null || it.end == null) return@let null
-                DateUtil.convertDatesPeriod(it.start, it.end)
-            },
+            dates = DateUtil.handleEventDates(dates),
             price = if (price.isEmpty()) null else price
         )
     }

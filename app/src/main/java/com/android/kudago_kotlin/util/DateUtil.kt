@@ -1,10 +1,24 @@
 package com.android.kudago_kotlin.util
 
+import com.android.kudago_kotlin.model.data.server.entity.Events
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
 object DateUtil {
+
+    fun handleEventDates(dates: List<Events.Event.Date>?): String? {
+        if (dates == null) return null
+
+        val datesStringBuilder = StringBuilder()
+        dates.filter { it.start != null && it.end != null }
+            .forEachIndexed { index, date ->
+                datesStringBuilder.append(convertDatesPeriod(date.start!!, date.end!!))
+                if (!dates.isLast(index)) datesStringBuilder.append(", ")
+            }
+
+        return datesStringBuilder.toString()
+    }
 
     fun convertDatesPeriod(dateStart: Long, dateEnd: Long): String? {
         val dateStartFormatted = Date(dateStart * 1000L)
