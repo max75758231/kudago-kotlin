@@ -20,11 +20,10 @@ class CitiesInteractor @Inject constructor(
         } else {
             return Result.Success(
                 cities.map { city ->
-                    val mappedCity = city.toDomainModel()
-                    if (getCity() == mappedCity.name) {
-                        mappedCity.copy(isSelected = true)
+                    if (getCity() == city.name) {
+                        city.isSelected = true
                     }
-                    return@map mappedCity
+                    return@map city
                 }
             )
         }
