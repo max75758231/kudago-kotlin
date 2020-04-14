@@ -23,7 +23,7 @@ class EventsDataSource(private val eventsRepository: EventsRepository) : PageKey
         coroutineScope?.launch {
             try {
                 onInitialLoadingStarted?.invoke()
-                val events = eventsRepository.getEvents("1", params.requestedLoadSize)
+                val events = eventsRepository.getEvents("1", params.requestedLoadSize).toDomainModel()
                 val nextPageLink = events.nextPage
                 val next = nextPageLink?.substringAfterLast("page=")?.substringBefore("&")
                 callback.onResult(events.results, null, next.toString())
@@ -41,7 +41,7 @@ class EventsDataSource(private val eventsRepository: EventsRepository) : PageKey
         coroutineScope?.launch {
             try {
                 onPagingLoadingStarted?.invoke()
-                val events = eventsRepository.getEvents(params.key, params.requestedLoadSize)
+                val events = eventsRepository.getEvents(params.key, params.requestedLoadSize).toDomainModel()
                 val nextPageLink = events.nextPage
                 val next = nextPageLink?.substringAfterLast("page=")?.substringBefore("&")
                 callback.onResult(events.results, next.toString())

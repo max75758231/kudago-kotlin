@@ -12,10 +12,11 @@ class CitiesInteractor @Inject constructor(
 ) {
 
     suspend fun getCities(): List<City> = citiesRepository.getCities().map { city ->
-        if (getCity() == city.name) {
-            city.copy(isSelected = true)
+        val mappedCity = city.toDomainModel()
+        if (getCity() == mappedCity.name) {
+            mappedCity.copy(isSelected = true)
         }
-        return@map city
+        return@map mappedCity
     }
 
     fun setCity(citySlug: String) = citiesRepository.setCity(citySlug)

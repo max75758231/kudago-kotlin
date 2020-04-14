@@ -9,7 +9,7 @@ class CitiesRepository @Inject constructor(
     private val prefs: Prefs
 ) {
 
-    suspend fun getCities() = api.getCities(OrderBy.NAME.name.toLowerCase()).map { it.toDomainModel() }
+    suspend fun getCities() = api.getCities(OrderBy.NAME.name.toLowerCase())
 
     fun getCity() = prefs.searchCitySlug
 
