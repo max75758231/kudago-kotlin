@@ -11,11 +11,13 @@ import androidx.lifecycle.ViewModelProviders
 import com.android.kudago_kotlin.App
 import com.android.kudago_kotlin.R
 import com.android.kudago_kotlin.domain.City
+import com.android.kudago_kotlin.domain.Result
 import com.android.kudago_kotlin.util.setVisible
+import com.android.kudago_kotlin.util.toast
 import kotlinx.android.synthetic.main.dialog_cities.*
 import javax.inject.Inject
 
-class CitiesDialogFragment(val onCitySelectionResultListener: OnCitySelectionResultListener) : AppCompatDialogFragment() {
+class CitiesDialogFragment(val onCitySelectionResultListener: OnCitySelectionResultListener) : AppCompatDialogFragment(), OnCitySelectedListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -31,23 +33,33 @@ class CitiesDialogFragment(val onCitySelectionResultListener: OnCitySelectionRes
             builder.setView(activity.layoutInflater.inflate(R.layout.dialog_cities, null))
 
             citiesViewModel = ViewModelProviders.of(this, viewModelFactory)[CitiesViewModel::class.java]
-            citiesViewModel.cities.observe(this, Observer {
-                showProgress(false)
-                dialog?.rv_cities?.adapter = CitiesAdapter(it, object : OnCitySelectedListener {
-                    override fun onCitySelected(city: City) {
-                        onCitySelectionResultListener.onCitySelectedSuccess(city)
-                        dismiss()
+            citiesViewModel.cities.observe(this, Observer { result ->
+
+                when(result) {
+                    is Result.Success -> {
+                        showProgress(false)
+                        dialog?.rv_cities?.adapter = CitiesAdapter(result.data!!, this)
                     }
-                })
+                    is Result.Loading -> showProgress(true)
+                    is Result.Error -> {
+                        showProgress(false)
+                        activity.toast("no data")
+                    }
+                }
             })
 
-            citiesViewModel.citiesSearch.observe(this, Observer {
-                dialog?.rv_cities?.adapter = CitiesAdapter(it, object : OnCitySelectedListener {
-                    override fun onCitySelected(city: City) {
-                        onCitySelectionResultListener.onCitySelectedSuccess(city)
-                        dismiss()
+            citiesViewModel.citiesSearch.observe(this, Observer { result ->
+                when(result) {
+                    is Result.Success -> {
+                        showProgress(false)
+                        dialog?.rv_cities?.adapter = CitiesAdapter(result.data!!, this)
                     }
-                })
+                    is Result.Loading -> showProgress(true)
+                    is Result.Error -> {
+                        showProgress(false)
+                        activity.toast("no data")
+                    }
+                }
             })
 
             citiesViewModel.loadCities()
@@ -74,6 +86,11 @@ class CitiesDialogFragment(val onCitySelectionResultListener: OnCitySelectionRes
             view.pb_cities.setVisible(isVisible)
             view.rv_cities.setVisible(!isVisible)
         }
+    }
+
+    override fun onCitySelected(city: City) {
+        onCitySelectionResultListener.onCitySelectedSuccess(city)
+        dismiss()
     }
 }
 
