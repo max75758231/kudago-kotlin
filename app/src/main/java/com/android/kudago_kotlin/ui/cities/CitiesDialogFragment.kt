@@ -17,7 +17,9 @@ import com.android.kudago_kotlin.util.toast
 import kotlinx.android.synthetic.main.dialog_cities.*
 import javax.inject.Inject
 
-class CitiesDialogFragment(val onCitySelectionResultListener: OnCitySelectionResultListener) : AppCompatDialogFragment(), OnCitySelectedListener {
+class CitiesDialogFragment(
+    private val onCitySelectionResultListener: OnCitySelectionResultListener
+) : AppCompatDialogFragment(), OnCitySelectedListener {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -73,12 +75,10 @@ class CitiesDialogFragment(val onCitySelectionResultListener: OnCitySelectionRes
     override fun onStart() {
         super.onStart()
 
-        dialog?.let {
-            it.btn_back.setOnClickListener { dismiss() }
-
-            it.et_cities_search.addTextChangedListener { citiesViewModel.searchCities(it.toString()) }
+        dialog?.apply {
+            btn_back.setOnClickListener { dismiss() }
+            et_cities_search.addTextChangedListener { citiesViewModel.searchCities(it.toString()) }
         }
-
     }
 
     private fun showProgress(isVisible: Boolean) {
