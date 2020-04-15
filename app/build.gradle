@@ -69,7 +69,6 @@ ext {
     // Other
     googleMaps_version = "17.0.0"
     indicatorVersion = "2.1.2"
-    multidex_version = "1.0.3"
 
     // Testing
     junit_version = "4.12"
@@ -122,5 +121,4 @@ dependencies {
     // Others
     implementation "com.google.android.gms:play-services-maps:$googleMaps_version"
     implementation "me.relex:circleindicator:$indicatorVersion"
-    implementation "com.android.support:multidex:$multidex_version"
 }

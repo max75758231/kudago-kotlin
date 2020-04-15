@@ -1,6 +1,6 @@
 package com.android.kudago_kotlin
 
-import androidx.multidex.MultiDexApplication
+import android.app.Application
 import com.android.kudago_kotlin.di.AppComponent
 import com.android.kudago_kotlin.di.AppModule
 import com.android.kudago_kotlin.di.DaggerAppComponent
@@ -9,7 +9,7 @@ import io.realm.Realm
 import io.realm.RealmConfiguration
 
 
-class App : MultiDexApplication() {
+class App : Application() {
 
     companion object {
         lateinit var component: AppComponent
