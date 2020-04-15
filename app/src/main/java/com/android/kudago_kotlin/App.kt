@@ -20,7 +20,8 @@ class App : Application() {
 
         component = DaggerAppComponent.builder().appModule(AppModule(this)).build()
 
-        Stetho.initializeWithDefaults(this)
+        Stetho.initializeWithDefaults(this) // Open chrome://inspect in browser
+
         Realm.init(this)
         Realm.setDefaultConfiguration(
             RealmConfiguration.Builder()
