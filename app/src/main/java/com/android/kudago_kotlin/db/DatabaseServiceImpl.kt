@@ -7,13 +7,7 @@ import io.realm.RealmObject
 
 class DatabaseServiceImpl : DatabaseService {
 
-    override fun <E : RealmModel> deleteItems(classObj: Class<E>, decorator: QueryDecorator<E>) =
-        deleteItemList(classObj, decorator)
-
-    override fun <E : RealmModel> getItemList(
-        classObj: Class<E>,
-        decorator: QueryDecorator<E>
-    ): List<E> {
+    override fun <E : RealmModel> getItemList(classObj: Class<E>, decorator: QueryDecorator<E>): List<E> {
         return try {
             Realm.getDefaultInstance().use { realm ->
                 val realmList = decorator.decorateQuery(realm.where(classObj)).findAll()
@@ -41,17 +35,14 @@ class DatabaseServiceImpl : DatabaseService {
         }
     }
 
-    override fun <E : RealmModel> deleteItemList(
-        classObj: Class<E>,
-        decorator: QueryDecorator<E>
-    ): Boolean {
+    override fun <E : RealmModel> deleteItemList(classObj: Class<E>, decorator: QueryDecorator<E>): Boolean {
         Realm.getDefaultInstance().use { realm ->
             realm.beginTransaction()
             return try {
                 val items = decorator.decorateQuery(realm.where(classObj))
                     .findAll()
                 for (index in items.indices.reversed()) {
-                    RealmObject.deleteFromRealm(items.get(index)!!)
+                    RealmObject.deleteFromRealm(items[index]!!)
                 }
                 realm.commitTransaction()
                 true

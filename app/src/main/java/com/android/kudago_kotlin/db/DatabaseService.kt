@@ -6,11 +6,6 @@ import io.realm.RealmModel
 
 interface DatabaseService {
 
-    fun <E : RealmModel> deleteItems(
-        classObj: Class<E>,
-        decorator: QueryDecorator<E> = EmptyQueryDecorator()
-    ): Boolean
-
     fun <E : RealmModel> getItemList(
         classObj: Class<E>,
         decorator: QueryDecorator<E> = EmptyQueryDecorator()
